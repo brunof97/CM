@@ -1,10 +1,7 @@
 package ipvc.estg.cm.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import ipvc.estg.cm.Notas.Notas
 
 
@@ -15,7 +12,7 @@ interface NotasDao {
     fun getNotas(): LiveData<List<Notas>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(title: Notas)
+    suspend fun insert(note:Notas)
 
     @Query("DELETE FROM notas_table")
     suspend fun deleteAll()

@@ -10,14 +10,19 @@ import ipvc.estg.cm.Notas.Notas
 import ipvc.estg.cm.R
 
 class NotasAdapter internal constructor(
-    context:Context
+    context:Context,
+        private val cellClickListener: CellClickListener
+
 ):RecyclerView.Adapter<NotasAdapter.NotasViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var nota = emptyList<Notas>()
 
+
+
     class NotasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val NotasItemView: TextView = itemView.findViewById(R.id.textView)
+        val NotasItemViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
+        val NotasItemViewBody: TextView = itemView.findViewById(R.id.textViewBody)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotasViewHolder {
@@ -27,7 +32,11 @@ class NotasAdapter internal constructor(
 
     override fun onBindViewHolder(holder: NotasViewHolder, position: Int) {
         val current = nota[position]
-        holder.NotasItemView.text=current.title
+        holder.NotasItemViewTitle.text=current.title
+        holder.NotasItemViewBody.text=current.body
+        holder.NotasItemViewTitle.setOnClickListener{
+            cellClickListener.onCellClickListener()
+        }
     }
 
     internal fun setNotas(nota:List<Notas>){
@@ -35,6 +44,20 @@ class NotasAdapter internal constructor(
         notifyDataSetChanged()
     }
 
-    override fun getItemCount()=nota.size
+    override fun getItemCount():Int{
+        return nota.size
+    }
+
+    fun getNotaPosition(position: Int):Notas{
+        return nota[position];
+    }
+
+    interface CellClickListener {
+        fun onCellClickListener()
+    }
+
+   
 
 }
+
+

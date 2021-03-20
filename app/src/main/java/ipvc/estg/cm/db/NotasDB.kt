@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-@Database(entities = arrayOf(Notas::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Notas::class), version = 2, exportSchema = false)
 public abstract class NotasDB : RoomDatabase() {
 
     abstract fun NotasDao(): NotasDao
@@ -29,10 +29,10 @@ public abstract class NotasDB : RoomDatabase() {
                     notaDao.deleteAll()
 
                     //add nota
-                    var titulo=Notas(1,"Nota1")
-                    notaDao.insert(titulo)
-                    titulo=Notas(2,"Nota2")
-                    notaDao.insert(titulo)
+                    var nota1=Notas(1,"Nota1","dfefiofednefneiofs")
+                    notaDao.insert(nota1)
+                    var nota2=Notas(2,"Nota2","fweifnviwein")
+                    notaDao.insert(nota2)
 
 
 
@@ -59,6 +59,7 @@ public abstract class NotasDB : RoomDatabase() {
                     "notas_database"
 
                 )
+                        .fallbackToDestructiveMigration()
                     .addCallback(NotasDatabaseCallBack(scope))
                     .build()
                 INSTANCE=instance

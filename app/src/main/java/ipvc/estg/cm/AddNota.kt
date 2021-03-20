@@ -10,22 +10,28 @@ import android.widget.EditText
 
 class AddNota : AppCompatActivity() {
 
-    private lateinit var editNotasView:EditText
+    private lateinit var editTitleView:EditText
+    private lateinit var editBodyView:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_nota)
 
-        editNotasView=findViewById(R.id.edit_nota)
+        editTitleView=findViewById(R.id.edit_title)
+        editBodyView=findViewById(R.id.edit_body)
 
         val button=findViewById<Button>(R.id.button_save)
         button.setOnClickListener{
             val replyIntent= Intent()
-            if(TextUtils.isEmpty(editNotasView.text)){
+            if(TextUtils.isEmpty(editTitleView.text)){
                 setResult(Activity.RESULT_CANCELED,replyIntent)
-            } else{
-                val titulo=editNotasView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, titulo)
+            } else if(TextUtils.isEmpty(editBodyView.text)){
+                setResult(Activity.RESULT_CANCELED,replyIntent)
+            }else{
+                val title=editTitleView.text.toString()
+                val body=editBodyView.text.toString()
+                replyIntent.putExtra(EXTRA_REPLY1, title)
+                replyIntent.putExtra(EXTRA_REPLY2, body)
                 setResult(Activity.RESULT_OK,replyIntent)
             }
             finish()
@@ -33,6 +39,8 @@ class AddNota : AppCompatActivity() {
     }
 
     companion object{
-        const val EXTRA_REPLY="com.android.wordlistsql.Reply"
+        const val EXTRA_REPLY1="title"
+        const val EXTRA_REPLY2="body"
+
     }
 }

@@ -9,7 +9,15 @@
 
 
     <EditText
-        android:id="@+id/edit_nota"
+        android:id="@+id/edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:inputType="textAutoComplete"
+        android:textSize="18sp"
+        />
+    <EditText
+        android:id="@+id/edit_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"

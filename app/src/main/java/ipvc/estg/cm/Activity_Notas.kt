@@ -2,6 +2,7 @@ package ipvc.estg.cm
 
 import android.app.Activity
 import android.content.Intent
+import android.icu.text.CaseMap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,19 +14,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ipvc.estg.cm.Notas.Notas
 import ipvc.estg.cm.adapters.NotasAdapter
+import ipvc.estg.cm.dao.NotasDao
 import ipvc.estg.cm.viewModel.NotasViewModel
 
-class Activity_Notas : AppCompatActivity() {
+class Activity_Notas : AppCompatActivity(),NotasAdapter.CellClickListener {
+
+
+   // NotasAdapter.onItemClickListener
 
     private lateinit var notasViewModel:NotasViewModel
     private val newNotasActivityRequestCode=1
-
+    private lateinit var adapter:   NotasAdapter;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity__notas)
 
         val recyclerView=findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter=NotasAdapter(this)
+        adapter=NotasAdapter(this,this)
         recyclerView.adapter=adapter
         recyclerView.layoutManager=LinearLayoutManager(this)
 
@@ -45,10 +50,13 @@ class Activity_Notas : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode==newNotasActivityRequestCode&&resultCode==Activity.RESULT_OK){
-            data?.getStringExtra(AddNota.EXTRA_REPLY)?.let {
-                val titulo = Notas(title = it)
-                notasViewModel.insert(titulo)
-            }
+            val ntitle=data?.getStringExtra(AddNota.EXTRA_REPLY1)
+            val nbody=data?.getStringExtra(AddNota.EXTRA_REPLY2)
+
+            val nota=Notas(title=ntitle.toString(),body=nbody.toString())
+
+            notasViewModel.insert(nota)
+
             }else {
                 Toast.makeText(
                     applicationContext,
@@ -59,4 +67,17 @@ class Activity_Notas : AppCompatActivity() {
 
     }
 
+    override fun onCellClickListener(){
+
+    Toast.makeText(this,"Click",Toast.LENGTH_SHORT).show()
+
+
+  //  override fun onItemClick(position:Int){
+
+    //    val toast = Toast.makeText(applicationContext, "click", Toast.LENGTH_LONG)
+      //  toast.show()
+        //val intent = Intent(this,NotasDetalhe::class.java)
+     //intent.putExtra("titulo",adapter.getNotaPosition(position).title)
+     //startActivity(intent);
+ }
 }

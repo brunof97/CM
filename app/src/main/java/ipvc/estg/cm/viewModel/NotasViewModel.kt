@@ -24,8 +24,8 @@ class NotasViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun insert(titulo:Notas)=viewModelScope.launch(Dispatchers.IO){
-        repository.insert(titulo)
+    fun insert(note:Notas)=viewModelScope.launch(Dispatchers.IO){
+        repository.insert(note)
     }
 }
 

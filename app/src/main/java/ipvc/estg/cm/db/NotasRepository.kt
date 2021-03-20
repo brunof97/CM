@@ -11,7 +11,8 @@ class NotasRepository(private val notasDao: NotasDao) {
     val allNotas: LiveData<List<Notas>> = notasDao.getNotas()
 
 
-    suspend fun insert(titulo: Notas) {
-        notasDao.insert(titulo)
+    suspend fun insert(note: Notas) {
+        notasDao.insert(note)
+
     }
 }
