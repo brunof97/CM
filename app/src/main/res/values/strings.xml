@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CM</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Apagar</string>
+    <string name="edit">Editar</string>
 </resources>

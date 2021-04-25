@@ -67,17 +67,15 @@ class Activity_Notas : AppCompatActivity(),NotasAdapter.CellClickListener {
 
     }
 
-    override fun onCellClickListener(){
+    override fun onCellClickListener(position:Int){
 
     Toast.makeText(this,"Click",Toast.LENGTH_SHORT).show()
+    val intent=Intent(this,NotasDetalhe::class.java)
+        intent.putExtra("id",adapter.getNotaPosition(position).id)
+        intent.putExtra("title",adapter.getNotaPosition(position).title)
+        intent.putExtra("body",adapter.getNotaPosition(position).body)
+        startActivity(intent)
 
 
-  //  override fun onItemClick(position:Int){
-
-    //    val toast = Toast.makeText(applicationContext, "click", Toast.LENGTH_LONG)
-      //  toast.show()
-        //val intent = Intent(this,NotasDetalhe::class.java)
-     //intent.putExtra("titulo",adapter.getNotaPosition(position).title)
-     //startActivity(intent);
  }
 }

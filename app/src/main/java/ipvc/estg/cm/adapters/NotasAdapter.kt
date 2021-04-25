@@ -34,8 +34,8 @@ class NotasAdapter internal constructor(
         val current = nota[position]
         holder.NotasItemViewTitle.text=current.title
         holder.NotasItemViewBody.text=current.body
-        holder.NotasItemViewTitle.setOnClickListener{
-            cellClickListener.onCellClickListener()
+        holder.itemView.setOnClickListener{
+            cellClickListener.onCellClickListener(position)
         }
     }
 
@@ -53,7 +53,7 @@ class NotasAdapter internal constructor(
     }
 
     interface CellClickListener {
-        fun onCellClickListener()
+        fun onCellClickListener(position: Int)
     }
 
    
