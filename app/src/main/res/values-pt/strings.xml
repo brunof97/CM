@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CM</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Apagar</string>
+    <string name="edit">Editar</string>
+    <string name="notes">Notas Pessoais</string>
+    <string name="remember">Lembrar-me</string>
+    <string name="logout">Sair</string>
+    <string name="Signin">Entrar</string>
+    <string name="incorrect">Username ou password incorreto</string>
+    <string name="welcome">Bem vindo/a</string>
+    <string name="emptynote">Nota vazia</string>
+    <string name="emptyfield">Todos os campos devem estar preenchidos</string>
+    <string name="title_activity_maps">Mapa</string>
+</resources>

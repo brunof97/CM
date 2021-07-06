@@ -47,7 +47,7 @@ class NotasDetalhe : AppCompatActivity() {
 
         button_update.setOnClickListener {
             if (TextUtils.isEmpty(title.text) || TextUtils.isEmpty(body.text)) {
-                Toast.makeText(this, "Todos os campos devem estar preenchidos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.emptyfield), Toast.LENGTH_SHORT).show();
             } else {
                 notasViewModel.update(id = id, title = title.text.toString(), body = body.text.toString())
                 Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show();

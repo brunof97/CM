@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">CM</string>
-    <string name="save">Guardar</string>
-    <string name="delete">Apagar</string>
-    <string name="edit">Editar</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="notes">Personal Notes</string>
+    <string name="remember">Remember me</string>
+    <string name="logout">Logout</string>
+    <string name="Signin">Sign in</string>
+    <string name="incorrect">Incorrect username or password</string>
+    <string name="welcome">Welcome</string>
+    <string name="emptynote">Empty Note</string>
+    <string name="emptyfield">All fields must be filled</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

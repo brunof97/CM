@@ -60,7 +60,7 @@ class Activity_Notas : AppCompatActivity(),NotasAdapter.CellClickListener {
             }else {
                 Toast.makeText(
                     applicationContext,
-                    "nota vazia",
+                        getString(R.string.emptynote),
                     Toast.LENGTH_LONG).show()
             }
 
@@ -69,7 +69,7 @@ class Activity_Notas : AppCompatActivity(),NotasAdapter.CellClickListener {
 
     override fun onCellClickListener(position:Int){
 
-    Toast.makeText(this,"Click",Toast.LENGTH_SHORT).show()
+
     val intent=Intent(this,NotasDetalhe::class.java)
         intent.putExtra("id",adapter.getNotaPosition(position).id)
         intent.putExtra("title",adapter.getNotaPosition(position).title)
